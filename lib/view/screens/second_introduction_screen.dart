@@ -1,18 +1,19 @@
-import 'package:firebase_task/view/screens/second_introduction_screen.dart';
-import 'package:firebase_task/view/widgets/custom_button.dart';
-import 'package:firebase_task/view/widgets/rectangle_widget.dart';
+
+import 'package:firebase_task/view/screens/third_introduction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FirstIntroductionScreen extends StatefulWidget {
-  const FirstIntroductionScreen({super.key});
+import '../widgets/custom_button.dart';
+import '../widgets/rectangle_widget.dart' show Rectangle;
+
+class SecondIntroductionScreen extends StatefulWidget {
+  const SecondIntroductionScreen({super.key});
 
   @override
-  State<FirstIntroductionScreen> createState() =>
-      _FirstIntroductionScreenState();
+  State<SecondIntroductionScreen> createState() => _SecondIntroductionScreenState();
 }
 
-class _FirstIntroductionScreenState extends State<FirstIntroductionScreen> {
+class _SecondIntroductionScreenState extends State<SecondIntroductionScreen> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
@@ -29,7 +30,7 @@ class _FirstIntroductionScreenState extends State<FirstIntroductionScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Rectangle(color: Color(0xFF292D32)),
-                  Rectangle(),
+                  Rectangle(color: Color(0xFF292D32)),
                   Rectangle(),
                 ],
               ),
@@ -37,14 +38,14 @@ class _FirstIntroductionScreenState extends State<FirstIntroductionScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Image.asset(
-                  'assets/shield-tick.png',
+                  'assets/box.png',
                   height: height * .281,
                   width: width * .5,
                 ),
               ),
               SizedBox(height: height * .075),
               Text(
-                'Security',
+                'Fast',
                 style: GoogleFonts.poppins(
                   fontSize: 24,
                   fontWeight: FontWeight.w400,
@@ -59,7 +60,7 @@ class _FirstIntroductionScreenState extends State<FirstIntroductionScreen> {
                 ),
               ),
               Text(
-                'Control your security',
+                'Everything in single click',
                 style: GoogleFonts.poppins(
                   fontSize: 28,
                   fontWeight: FontWeight.w600,
@@ -68,7 +69,7 @@ class _FirstIntroductionScreenState extends State<FirstIntroductionScreen> {
               ),
               SizedBox(height: height * .018),
               Text(
-                'This application is build on blockchain so that you can get 100% security across websites & applications with single app.',
+                'Add, genreate, store, transfer, sync, export & copy all your passwords in single click. Use autofill for quick action without opening app.',
                 style: GoogleFonts.poppins(
                   fontSize: 15,
                   fontWeight: FontWeight.w400,
@@ -87,12 +88,8 @@ class _FirstIntroductionScreenState extends State<FirstIntroductionScreen> {
                 ),
                 color: Color(0xFF292D32),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SecondIntroductionScreen(),
-                    ),
-                  );
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>ThirdIntroductionScreen()));
                 },
               ),
               SizedBox(height: height * .025),

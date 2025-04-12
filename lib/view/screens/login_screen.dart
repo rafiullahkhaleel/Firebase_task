@@ -1,3 +1,4 @@
+import 'package:firebase_task/view/screens/otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -61,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Color(0xFF000000),
                 ),
               ),
+              SizedBox(height: height * .04),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 19, vertical: 28),
                 decoration: BoxDecoration(
@@ -83,25 +85,31 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Center(
                         child: Row(
                           children: [
-                            Container(
-                              height: height * .045,
-                              width: width * .35,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(7),
-                                color: Color(0xFF292D32),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Register',
-                                  style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 18,
-                                    color: Color(0xFFFFFFFF),
+                            InkWell(
+                              onTap: (){
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context)=>OtpScreen()));
+                              },
+                              child: Container(
+                                height: height * .042,
+                                width: width * .35,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(7),
+                                  color: Color(0xFF292D32),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Register',
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 18,
+                                      color: Color(0xFFFFFFFF),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                            SizedBox(width: width * .23),
+                            SizedBox(width: width * .2),
                             SizedBox(
                               height: height * .045,
                               child: Center(
@@ -128,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: height * .07,
+                      height: height * .065,
                       child: TextField(
                         controller: firstNameController,
                         onChanged: (value) {
@@ -148,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: height * .07,
+                      height: height * .065,
                       child: TextField(
                         controller: lastNameController,
                         onChanged: (value) => checkFields(),
@@ -166,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: height * .07,
+                      height: height * .065,
                       child: TextField(
                         controller: mobileController,
                         onChanged: (value) => checkFields(),
@@ -190,6 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
               InkWell(
                 onTap: isButtonEnabled ? () {} : null,
                 child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 17),
                   height: height * .07,
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xFF9B9B9B), width: 1),

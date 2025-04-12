@@ -76,7 +76,7 @@ class _SecondIntroductionScreenState extends State<SecondIntroductionScreen> {
                   color: Color(0xFF000000),
                 ),
               ),
-              SizedBox(height: height * .11),
+              Spacer(),
               CustomButton(
                 string: Text(
                   'Register',
@@ -103,6 +103,7 @@ class _SecondIntroductionScreenState extends State<SecondIntroductionScreen> {
                   ),
                 ),
               ),
+              SizedBox(height: height*.025,)
             ],
           ),
         ),

@@ -75,7 +75,7 @@ class _FirstIntroductionScreenState extends State<FirstIntroductionScreen> {
                   color: Color(0xFF000000),
                 ),
               ),
-              SizedBox(height: height * .11),
+              Spacer(),
               CustomButton(
                 string: Text(
                   'Register',
@@ -106,6 +106,7 @@ class _FirstIntroductionScreenState extends State<FirstIntroductionScreen> {
                   ),
                 ),
               ),
+              SizedBox(height: height*.025,)
             ],
           ),
         ),

@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "688062423145",
+    "project_id": "e-banquet",
+    "storage_bucket": "e-banquet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688062423145:android:ddd33b516daee2bb1b02f8",
+        "android_client_info": {
+          "package_name": "com.example.e_banquet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTOmwH7Bh4LSf-zXH5-lJ5JKyv2vZ_4Pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688062423145:android:175fbb1b0236e9141b02f8",
+        "android_client_info": {
+          "package_name": "com.example.firebase_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTOmwH7Bh4LSf-zXH5-lJ5JKyv2vZ_4Pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688062423145:android:d7c712be0bd40d921b02f8",
+        "android_client_info": {
+          "package_name": "com.example.storag"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTOmwH7Bh4LSf-zXH5-lJ5JKyv2vZ_4Pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

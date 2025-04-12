@@ -1,3 +1,4 @@
+import 'package:firebase_task/view/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,7 +9,8 @@ class ThirdIntroductionScreen extends StatefulWidget {
   const ThirdIntroductionScreen({super.key});
 
   @override
-  State<ThirdIntroductionScreen> createState() => _ThirdIntroductionScreenState();
+  State<ThirdIntroductionScreen> createState() =>
+      _ThirdIntroductionScreenState();
 }
 
 class _ThirdIntroductionScreenState extends State<ThirdIntroductionScreen> {
@@ -38,21 +40,23 @@ class _ThirdIntroductionScreenState extends State<ThirdIntroductionScreen> {
                 height: height * .171,
                 width: width * .3,
               ),
-              Text('Passblock',
-              style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w700,
-                fontSize: 49,
-                color: Color(0xFF292D32)
+              Text(
+                'Passblock',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 49,
+                  color: Color(0xFF292D32),
+                ),
               ),
+              Text(
+                'Frictionless Security',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 26,
+                  color: Color(0xFF000000),
+                ),
               ),
-              Text('Frictionless Security',
-              style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w400,
-                fontSize: 26,
-                color: Color(0xFF000000)
-              ),
-              ),
-              SizedBox(height: height*.35,),
+              SizedBox(height: height * .35),
               CustomButton(
                 string: Text(
                   'Register',
@@ -62,11 +66,17 @@ class _ThirdIntroductionScreenState extends State<ThirdIntroductionScreen> {
                     color: Color(0xFFFFFFFF),
                   ),
                 ),
-                color: Color(0xFF292D32), onTap: () {  },
+                color: Color(0xFF292D32),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>LoginScreen()));
+                },
               ),
               SizedBox(height: height * .025),
               CustomButton(
-                onTap: () {},
+                onTap: () {
+
+                },
                 string: Text(
                   'Already have an account',
                   style: GoogleFonts.poppins(

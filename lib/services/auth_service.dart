@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_task/view/home_screen.dart';
+import 'package:firebase_task/view/screens/home_screen.dart';
 import 'package:firebase_task/view/screens/authentication_screens/otp_screen.dart';
 import 'package:flutter/material.dart';
 

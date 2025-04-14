@@ -1,10 +1,10 @@
 
-import 'package:firebase_task/view/screens/third_introduction_screen.dart';
+import 'package:firebase_task/view/screens/introduction_screens/third_introduction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../widgets/custom_button.dart';
-import '../widgets/rectangle_widget.dart' show Rectangle;
+import '../../widgets/custom_button.dart';
+import '../../widgets/rectangle_widget.dart' show Rectangle;
 
 class SecondIntroductionScreen extends StatefulWidget {
   const SecondIntroductionScreen({super.key});

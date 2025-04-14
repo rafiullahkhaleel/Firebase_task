@@ -1,15 +1,16 @@
 import 'package:firebase_task/services/auth_service.dart';
+import 'package:firebase_task/view/screens/authentication_screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   AuthService authService = AuthService();
 
   TextEditingController firstNameController = TextEditingController();
@@ -95,35 +96,39 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       child: Row(
                         children: [
-                          InkWell(
-                            child: Container(
-                              height: height * .042,
-                              width: width * .35,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(7),
-                                color: const Color(0xFF292D32),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Register',
-                                  style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
+                          Container(
+                            height: height * .045,
+                            width: width * .35,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: const Color(0xFF292D32),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Register',
+                                style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 18,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
                           ),
                           SizedBox(width: width * .2),
-                          Text(
-                            'Login',
-                            style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                              color: const Color(0xFF292D32),
+                          InkWell(
+                            onTap: (){
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context)=>LoginScreen()));
+                            },
+                            child: Text(
+                              'Login',
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                                color: const Color(0xFF292D32),
+                              ),
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ),

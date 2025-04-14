@@ -1,4 +1,4 @@
-import 'package:firebase_task/view/screens/second_introduction_screen.dart';
+import 'package:firebase_task/view/screens/introduction_screens/second_introduction_screen.dart';
 import 'package:firebase_task/view/widgets/custom_button.dart';
 import 'package:firebase_task/view/widgets/rectangle_widget.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_task/firebase_options.dart';
-import 'package:firebase_task/view/screens/first_introduction_screen.dart';
+import 'package:firebase_task/view/screens/introduction_screens/first_introduction_screen.dart';
 import 'package:flutter/material.dart';
 
 void main()async{

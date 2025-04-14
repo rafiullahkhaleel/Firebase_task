@@ -1,9 +1,9 @@
-import 'package:firebase_task/view/screens/login_screen.dart';
+import 'package:firebase_task/view/screens/authentication_screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../widgets/custom_button.dart';
-import '../widgets/rectangle_widget.dart' show Rectangle;
+import '../../widgets/custom_button.dart';
+import '../../widgets/rectangle_widget.dart' show Rectangle;
 
 class ThirdIntroductionScreen extends StatefulWidget {
   const ThirdIntroductionScreen({super.key});
@@ -69,7 +69,7 @@ class _ThirdIntroductionScreenState extends State<ThirdIntroductionScreen> {
                 color: Color(0xFF292D32),
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context)=>LoginScreen()));
+                      MaterialPageRoute(builder: (context)=>RegisterScreen()));
                 },
               ),
               SizedBox(height: height * .025),

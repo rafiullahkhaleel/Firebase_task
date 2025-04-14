@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_task/view/screens/home_screen.dart';
+import 'package:firebase_task/view/screens/bottom_bar_screen.dart';
 import 'package:firebase_task/view/screens/authentication_screens/otp_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +31,7 @@ class AuthService{
 
       await FirebaseAuth.instance.signInWithCredential(credential).then((onValue){
         Navigator.push(ctx,
-            MaterialPageRoute(builder: (ctx)=>HomeScreen()));
+            MaterialPageRoute(builder: (ctx)=>BottomBarScreen()));
       });
     }catch(e){
       ScaffoldMessenger.of(ctx).showSnackBar(

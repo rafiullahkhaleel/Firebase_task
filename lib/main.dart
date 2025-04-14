@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_task/firebase_options.dart';
-import 'package:firebase_task/view/screens/home_screen.dart';
+import 'package:firebase_task/view/screens/bottom_bar_screen.dart';
 import 'package:firebase_task/view/screens/introduction_screens/first_introduction_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: BottomBarScreen(),
     );
   }
 }

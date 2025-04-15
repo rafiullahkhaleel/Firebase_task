@@ -1,10 +1,10 @@
-import 'package:firebase_task/view/screens/analysis_screen.dart';
 import 'package:firebase_task/view/screens/home_screen.dart';
 import 'package:firebase_task/view/screens/search_screen.dart';
-import 'package:firebase_task/view/screens/setting_screen.dart';
+import 'package:firebase_task/view/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomBarScreen extends StatefulWidget {
+
   const BottomBarScreen({super.key});
 
   @override
@@ -12,13 +12,13 @@ class BottomBarScreen extends StatefulWidget {
 }
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
-  int selectedIndex = 0;
+   int selectedIndex = 0;
+
 
   List<Widget> screens = [
     HomeScreen(),
-    AnalysisScreen(),
     SearchScreen(),
-    SettingScreen()
+    ProfileScreen()
   ];
   @override
   Widget build(BuildContext context) {
@@ -44,17 +44,6 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
             label: 'HOME',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/shield-search1.png'),
-              color: Colors.black,
-            ),
-            activeIcon: ImageIcon(
-              AssetImage('assets/shield-search.png'),
-              color: Colors.black,
-            ),
-            label: 'Analysis',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.search, color: Colors.black),
             activeIcon: Icon(Icons.search_rounded, color: Colors.black),
             label: 'SEARCH',
@@ -62,7 +51,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.settings_outlined, color: Colors.black),
             activeIcon: Icon(Icons.settings, color: Colors.black),
-            label: 'SETTING',
+            label: 'PROFILE',
           ),
         ],
       ),

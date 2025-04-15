@@ -1,17 +1,14 @@
-import 'package:firebase_task/view/screens/bottom_bar_screen.dart';
-import 'package:firebase_task/view/screens/new_record.dart';
-import 'package:firebase_task/view/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
@@ -25,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         title: Text(
-          'Passwords',
+          'Security',
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w400,
             fontSize: 24,
@@ -33,16 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context)=>NewRecord()));
-          },
-              icon: Icon(Icons.add, size: 35)),
-          SizedBox(width: width * .045),
-        ],
       ),
-      body: Column(children: []),
     );
   }
 }

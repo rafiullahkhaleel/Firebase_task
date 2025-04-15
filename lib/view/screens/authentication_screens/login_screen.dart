@@ -19,8 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void checkFields() {
     setState(() {
-      isButtonEnabled =
-              phoneNumber.hasMatch(mobileController.text.trim());
+      isButtonEnabled = phoneNumber.hasMatch(mobileController.text.trim());
     });
   }
 
@@ -59,7 +58,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: height * .04),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 20),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 19,
+                  vertical: 20,
+                ),
                 decoration: BoxDecoration(
                   border: Border.all(color: const Color(0xFF292D32), width: 2),
                   borderRadius: BorderRadius.circular(25),
@@ -70,16 +72,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     // Register/Login row
                     Container(
-                      padding: const EdgeInsets.symmetric(vertical: 8.2, horizontal: 9),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8.2,
+                        horizontal: 9,
+                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: const Color(0xFF000000), width: 1),
+                        border: Border.all(
+                          color: const Color(0xFF000000),
+                          width: 1,
+                        ),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           InkWell(
-                            onTap: (){
+                            onTap: () {
                               Navigator.of(context).pop();
                             },
                             child: Text(
@@ -122,8 +130,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: height*.065,
+                      height: height * .065,
                       child: TextField(
+                        onTapOutside: (e) {
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        },
                         controller: mobileController,
                         keyboardType: TextInputType.phone,
                         onChanged: (_) => checkFields(),
@@ -145,8 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Spacer(),
               InkWell(
-                onTap: isButtonEnabled ? () {
-                } : null,
+                onTap: isButtonEnabled ? () {} : null,
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 17),
                   height: height * .07,
@@ -154,9 +164,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     border: Border.all(color: Color(0xFF9B9B9B), width: 1),
                     borderRadius: BorderRadius.circular(10),
                     color:
-                    isButtonEnabled
-                        ? Color(0xFF292D32)
-                        : Colors.transparent,
+                        isButtonEnabled
+                            ? Color(0xFF292D32)
+                            : Colors.transparent,
                   ),
                   child: Center(
                     child: Text(
@@ -165,9 +175,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontWeight: FontWeight.w400,
                         fontSize: 20,
                         color:
-                        isButtonEnabled
-                            ? Color(0xFFFFFFFF)
-                            : Color(0xFF9B9B9B),
+                            isButtonEnabled
+                                ? Color(0xFFFFFFFF)
+                                : Color(0xFF9B9B9B),
                       ),
                     ),
                   ),

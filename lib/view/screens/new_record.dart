@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,6 +9,8 @@ class NewRecord extends StatefulWidget {
 }
 
 class _NewRecordState extends State<NewRecord> {
+  bool isChecked = false;
+  double sliderValue = 4;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
@@ -113,26 +114,110 @@ class _NewRecordState extends State<NewRecord> {
               ],
             ),
             SizedBox(height: height * .035),
-            Divider(thickness: 2.5,color: Color(0xFFDADADA),),
+            Divider(thickness: 2.5, color: Color(0xFFDADADA)),
             SizedBox(height: height * .015),
-            Text('Password',style: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-              color: Color(0xFF292D32)
-            ),),
+            Text(
+              'Password',
+              style: GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+                color: Color(0xFF292D32),
+              ),
+            ),
             SizedBox(height: height * .015),
             TextField(
               decoration: InputDecoration(
-                suffixIcon: ImageIcon(
-                  AssetImage('assets/refresh-2.png')
-                ),
+                suffixIcon: ImageIcon(AssetImage('assets/refresh-2.png')),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5),
-                  borderSide: BorderSide(color: Color(0xFF9B9B9B))
-                )
-                    
+                  borderSide: BorderSide(color: Color(0xFF9B9B9B)),
+                ),
               ),
-            )
+            ),
+            SizedBox(height: height * .03),
+            Row(
+              children: [
+                Text(
+                  'Length',
+                  style: GoogleFonts.poppins(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFF292D32),
+                  ),
+                ),
+                SizedBox(width: width * .14),
+                Container(
+                  height: height * .04,
+                  width: width * .09,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    border: Border.all(color: Color(0xFFDADADA), width: 2),
+                  ),
+                  child: Center(
+                    child: Text(
+
+                    sliderValue.toInt().toString(),
+                      style: GoogleFonts.poppins(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF000000),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: width * .02),
+                Slider(
+                    value: sliderValue,
+                    activeColor: Color(0xFF105DFB),
+                    inactiveColor: Color(0xFF9B9B9B),
+                    min: 4,
+                    max: 24,
+                    onChanged: (value){
+                      setState(() {
+                        sliderValue = value;
+                      });
+                    }),
+              ],
+            ),
+            Row(
+              children: [
+                Text('Numbers',
+                  style: GoogleFonts.poppins(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFF292D32),
+                  ),
+                ),
+                SizedBox(width: width * .08),
+                Checkbox(
+                  activeColor: Color(0xFF105DFB),
+                    value: isChecked,
+                    onChanged: (value){
+                    setState(() {
+
+                    });
+                    isChecked = value!;
+                    }),
+                SizedBox(width: width * .04),
+                Text('Symbols',
+                  style: GoogleFonts.poppins(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFF292D32),
+                  ),
+                ),
+                SizedBox(width: width * .08),
+                Checkbox(
+                    activeColor: Color(0xFF105DFB),
+                    value: isChecked,
+                    onChanged: (value){
+                      setState(() {
+
+                      });
+                      isChecked = value!;
+                    }),
+              ],
+            ),
           ],
         ),
       ),

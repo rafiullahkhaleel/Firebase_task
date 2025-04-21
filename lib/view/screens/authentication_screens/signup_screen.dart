@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:task/view/screens/authentication_screens/phone_login_screen.dart';
+import 'package:task/view/screens/authentication_screens/register_screen.dart';
 import '../bottom_bar_screen.dart';
 import 'login_Screen.dart';
 
@@ -190,6 +192,35 @@ class _SignupScreenState extends State<SignupScreen> {
                                 },
                         ),
                       ],
+                    ),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context)=>RegisterScreen()));
+                    },
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * .065,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.black,
+                      ),
+                      child: Center(
+                        child:
+                        loading1 == false
+                            ? Text(
+                          'Continue with Phone Number',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        )
+                            : CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
                 ],

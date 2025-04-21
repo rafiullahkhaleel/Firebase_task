@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:task/view/screens/new_record.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,7 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('userData').snapshots(),
+        stream:
+            FirebaseFirestore.instance
+                .collection('userData')
+                .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+                .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -69,11 +74,13 @@ class _HomeScreenState extends State<HomeScreen> {
             final healthList =
                 allDocs.where((doc) => doc['category'] == 'Health').toList();
             final entertainmentList =
-            allDocs.where((doc) => doc['category'] == 'Entertainment').toList();
+                allDocs
+                    .where((doc) => doc['category'] == 'Entertainment')
+                    .toList();
             final shoppingList =
-            allDocs.where((doc) => doc['category'] == 'Shopping').toList();
+                allDocs.where((doc) => doc['category'] == 'Shopping').toList();
             final otherList =
-            allDocs.where((doc) => doc['category'] == 'Other').toList();
+                allDocs.where((doc) => doc['category'] == 'Other').toList();
 
             return ListView(
               padding: EdgeInsets.all(16),
@@ -152,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (healthList.isNotEmpty) ...[
                   TextWidget(text: 'Health'),
                   ...healthList.map(
-                        (doc) => Column(
+                    (doc) => Column(
                       children: [
                         ListTile(
                           leading: CircleAvatar(
@@ -187,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (entertainmentList.isNotEmpty) ...[
                   TextWidget(text: 'Entertainment'),
                   ...entertainmentList.map(
-                        (doc) => Column(
+                    (doc) => Column(
                       children: [
                         ListTile(
                           leading: CircleAvatar(
@@ -222,7 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (shoppingList.isNotEmpty) ...[
                   TextWidget(text: 'Shopping'),
                   ...shoppingList.map(
-                        (doc) => Column(
+                    (doc) => Column(
                       children: [
                         ListTile(
                           leading: CircleAvatar(
@@ -257,7 +264,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (otherList.isNotEmpty) ...[
                   TextWidget(text: 'Other'),
                   ...otherList.map(
-                        (doc) => Column(
+                    (doc) => Column(
                       children: [
                         ListTile(
                           leading: CircleAvatar(

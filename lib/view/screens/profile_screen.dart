@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:task/view/screens/authentication_screens/signup_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -51,8 +52,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           } else {
             return Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Spacer(),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(100),
                     child: Container(
@@ -79,6 +80,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       color: Color(0xFF808080),
                     ),
                   ),
+                  Spacer(),
+                  ElevatedButton(onPressed: (){
+                    FirebaseAuth.instance.signOut().then((value){
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context)=>SignupScreen()));
+                    });
+                  },
+                      child: Text('Log out'))
                 ],
               ),
             );

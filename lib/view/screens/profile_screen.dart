@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,35 +33,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: Container(
-                color: Colors.teal,
-                height: 150,
-                width: 150,
+      body: StreamBuilder(
+        stream:
+            FirebaseFirestore.instance
+                .collection('user')
+                .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+                .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('ERROR OCCURRED ${snapshot.error}'));
+          } else if (!snapshot.hasData ||
+              snapshot.data == null ||
+              snapshot.data!.docs.isEmpty) {
+            return Center(child: Text('No Data Available'));
+          } else {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: Container(
+                      color: Colors.teal,
+                      height: 150,
+                      width: 150,
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Text(
+                    snapshot.data!.docs[0]['username'],
+
+                    style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFF000000),
+                    ),
+                  ),
+                  Text(
+                    snapshot.data!.docs[0]['email'],
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: Color(0xFF808080),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            SizedBox(height: 30,),
-            Text('Rafiullah',
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-              color: Color(0xFF000000)
-            ),
-            ),
-            Text('rafiullah',
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
-              color: Color(0xFF808080)
-            ),
-            )
-          ],
-        ),
+            );
+          }
+        },
       ),
     );
   }

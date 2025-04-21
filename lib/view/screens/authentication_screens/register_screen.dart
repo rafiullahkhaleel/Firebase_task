@@ -1,5 +1,5 @@
 import 'package:task/services/auth_service.dart';
-import 'package:task/view/screens/authentication_screens/login_screen.dart';
+import 'package:task/view/screens/authentication_screens/phone_login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -118,7 +118,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           InkWell(
                             onTap: (){
                               Navigator.push(context,
-                                  MaterialPageRoute(builder: (context)=>LoginScreen()));
+                                  MaterialPageRoute(builder: (context)=>PhoneLoginScreen()));
                             },
                             child: Text(
                               'Login',

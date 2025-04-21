@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class PhoneLoginScreen extends StatefulWidget {
+  const PhoneLoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<PhoneLoginScreen> createState() => _PhoneLoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
   TextEditingController mobileController = TextEditingController();
 
   final RegExp phoneNumber = RegExp(

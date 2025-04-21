@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:task/firebase_options.dart';
+import 'package:task/view/screens/authentication_screens/login_Screen.dart';
+import 'package:task/view/screens/authentication_screens/signup_screen.dart';
 import 'package:task/view/screens/bottom_bar_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomBarScreen(),
+      home: FirebaseAuth.instance.currentUser == null ? SignupScreen() : BottomBarScreen()
     );
   }
 }

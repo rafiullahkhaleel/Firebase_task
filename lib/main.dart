@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'package:task/firebase_options.dart';
+import 'package:task/provider/auth_provider.dart';
 import 'package:task/view/screens/authentication_screens/login_Screen.dart';
 import 'package:task/view/screens/authentication_screens/signup_screen.dart';
 import 'package:task/view/screens/bottom_bar_screen.dart';
@@ -24,9 +26,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: FirebaseAuth.instance.currentUser == null ? SignupScreen() : BottomBarScreen()
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (create)=>AuthenticationProvider())
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: FirebaseAuth.instance.currentUser == null ? SignupScreen() : BottomBarScreen()
+      ),
     );
   }
 }

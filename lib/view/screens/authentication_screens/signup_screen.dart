@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task/view/screens/authentication_screens/phone_login_screen.dart';
 import 'package:task/view/screens/authentication_screens/register_screen.dart';
 import '../bottom_bar_screen.dart';
 import 'login_Screen.dart';

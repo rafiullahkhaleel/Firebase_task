@@ -2,7 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:task/firebase_options.dart';
-import 'package:task/provider/auth_provider.dart';
+import 'package:task/provider/bottom_bar_provider.dart';
+import 'package:task/provider/login_provider.dart';
+import 'package:task/provider/new_record_provider.dart';
+import 'package:task/provider/signup_provider.dart';
 import 'package:task/view/screens/authentication_screens/login_Screen.dart';
 import 'package:task/view/screens/authentication_screens/signup_screen.dart';
 import 'package:task/view/screens/bottom_bar_screen.dart';
@@ -28,7 +31,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (create)=>AuthenticationProvider())
+        ChangeNotifierProvider(create: (create)=>LoginProvider()),
+        ChangeNotifierProvider(create: (create)=>SignInProvider()),
+        ChangeNotifierProvider(create: (create)=>BottomBarProvider()),
+        ChangeNotifierProvider(create: (create)=>NewRecordProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

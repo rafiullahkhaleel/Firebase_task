@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../view/screens/authentication_screens/signup_screen.dart';
 import '../view/screens/bottom_bar_screen.dart';
 
-class AuthenticationProvider extends ChangeNotifier {
+class LoginProvider extends ChangeNotifier {
   final keyform = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

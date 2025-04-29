@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:task/provider/auth_provider.dart';
+import 'package:task/provider/login_provider.dart';
 
 import '../../widgets/my_custom_button.dart';
 
@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     print('build');
-    return Consumer<AuthenticationProvider>(
+    return Consumer<LoginProvider>(
       builder: (context, provider, child) {
         return Scaffold(
           appBar: AppBar(

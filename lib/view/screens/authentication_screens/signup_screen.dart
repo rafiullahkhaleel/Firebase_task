@@ -59,7 +59,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ),
                       CustomField(
-                        controller: provider.nameController,
+                        controller: provider.passwordController,
                         hintText: 'Password',
                         validationText: 'Please enter your Password',
                         border: OutlineInputBorder(

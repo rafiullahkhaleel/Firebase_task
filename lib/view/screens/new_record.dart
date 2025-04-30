@@ -2,6 +2,7 @@ import 'package:provider/provider.dart';
 import 'package:task/provider/new_record_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:task/view/widgets/custom_field.dart';
 
 class NewRecord extends StatefulWidget {
   const NewRecord({super.key});
@@ -13,7 +14,6 @@ class NewRecord extends StatefulWidget {
 class _NewRecordState extends State<NewRecord> {
   @override
   Widget build(BuildContext context) {
-    print('<<<<<<<<<object>>>>>>>>>');
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
     return Consumer<NewRecordProvider>(
@@ -39,61 +39,42 @@ class _NewRecordState extends State<NewRecord> {
               ),
               child: Column(
                 children: [
-                  Builder(
-                    builder: (context) {
-                      print('object');
-                      return Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
                         children: [
-                          Column(
-                            children: [
-                              SizedBox(height: height * .03),
-                              Text(
-                                'Name',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xFF292D32),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(width: width * .1),
-                          SizedBox(
-                            width: width * .44,
-                            child: TextField(
-                              controller: provider.nameController,
-                              onChanged: (val) {
-                                provider.field1();
-                                provider.checkedField();
-                                provider.colorChange();
-                              },
-                              decoration: InputDecoration(
-                                hintText: 'website or app name',
-                                hintStyle: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w300,
-                                  fontSize: 16,
-                                  color: Color(0xFF808080),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: width * .05),
-                          Column(
-                            children: [
-                              SizedBox(height: height * .02),
-                              ImageIcon(
-                                AssetImage('assets/tick-circle.png'),
-                                color:
-                                    provider.field1()
-                                        ? Color(0xFF1ED760)
-                                        : Color(0xFF9B9B9B),
-                              ),
-                            ],
+                          SizedBox(height: height * .03),
+                          MyText(label: 'Name'),
+                        ],
+                      ),
+                      SizedBox(width: width * .1),
+                      SizedBox(
+                        width: width * .44,
+                        child: CustomField(
+                          controller: provider.nameController,
+                          hintText: 'website or app name',
+                          onChanged: (val) {
+                            provider.field1();
+                            provider.checkedField();
+                            provider.colorChange();
+                          },
+                        ),
+                      ),
+                      SizedBox(width: width * .05),
+                      Column(
+                        children: [
+                          SizedBox(height: height * .02),
+                          ImageIcon(
+                            AssetImage('assets/tick-circle.png'),
+                            color:
+                                provider.field1()
+                                    ? Color(0xFF1ED760)
+                                    : Color(0xFF9B9B9B),
                           ),
                         ],
-                      );
-                    },
+                      ),
+                    ],
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -101,34 +82,20 @@ class _NewRecordState extends State<NewRecord> {
                       Column(
                         children: [
                           SizedBox(height: height * .03),
-                          Text(
-                            'User id',
-                            style: GoogleFonts.poppins(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xFF292D32),
-                            ),
-                          ),
+                          MyText(label: 'User id'),
                         ],
                       ),
                       SizedBox(width: width * .085),
                       SizedBox(
                         width: width * .44,
-                        child: TextField(
+                        child: CustomField(
                           controller: provider.emailController,
+                          hintText: 'username or email id',
                           onChanged: (val) {
                             provider.field2();
                             provider.checkedField();
                             provider.colorChange();
                           },
-                          decoration: InputDecoration(
-                            hintText: 'username or email id',
-                            hintStyle: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w300,
-                              fontSize: 16,
-                              color: Color(0xFF808080),
-                            ),
-                          ),
                         ),
                       ),
                       SizedBox(width: width * .05),
@@ -149,14 +116,7 @@ class _NewRecordState extends State<NewRecord> {
                   SizedBox(height: height * .035),
                   Row(
                     children: [
-                      Text(
-                        'Category',
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFF292D32),
-                        ),
-                      ),
+                      MyText(label: 'Category'),
                       SizedBox(width: width * .1),
                       DropdownButton<String>(
                         icon: Icon(Icons.arrow_drop_down_outlined, size: 50),
@@ -198,32 +158,24 @@ class _NewRecordState extends State<NewRecord> {
                   SizedBox(height: height * .035),
                   Divider(thickness: 2.5, color: Color(0xFFDADADA)),
                   SizedBox(height: height * .015),
-                  Text(
-                    'Password',
-                    style: GoogleFonts.poppins(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFF292D32),
-                    ),
-                  ),
+                  MyText(label: 'Password'),
                   SizedBox(height: height * .015),
                   Stack(
                     children: [
-                      TextField(
+                      CustomField(
+                        controller: provider.passwordController,
+                        hintText: '',
                         onChanged: (v) {
                           provider.field3();
                           provider.checkedField();
                           provider.colorChange();
                         },
-                        controller: provider.passwordController,
-                        decoration: InputDecoration(
-                          suffixIcon: ImageIcon(
-                            AssetImage('assets/refresh-2.png'),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(color: Color(0xFF9B9B9B)),
-                          ),
+                        suffixIcon: ImageIcon(
+                          AssetImage('assets/refresh-2.png'),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide: BorderSide(color: Color(0xFF9B9B9B)),
                         ),
                       ),
                       Positioned(
@@ -249,14 +201,7 @@ class _NewRecordState extends State<NewRecord> {
                   SizedBox(height: height * .03),
                   Row(
                     children: [
-                      Text(
-                        'Length',
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFF292D32),
-                        ),
-                      ),
+                      MyText(label: 'Length'),
                       Spacer(),
                       Container(
                         height: height * .035,
@@ -296,14 +241,7 @@ class _NewRecordState extends State<NewRecord> {
                   ),
                   Row(
                     children: [
-                      Text(
-                        'Numbers',
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFF292D32),
-                        ),
-                      ),
+                      MyText(label: 'Numbers'),
                       SizedBox(width: width * .045),
                       Checkbox(
                         activeColor: Color(0xFF105DFB),
@@ -312,14 +250,7 @@ class _NewRecordState extends State<NewRecord> {
                           provider.isCheckedNumbers = value!;
                         },
                       ),
-                      Text(
-                        'Symbols',
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFF292D32),
-                        ),
-                      ),
+                      MyText(label: 'Symbols'),
                       Spacer(),
                       Checkbox(
                         activeColor: Color(0xFF105DFB),
@@ -332,14 +263,7 @@ class _NewRecordState extends State<NewRecord> {
                   ),
                   Row(
                     children: [
-                      Text(
-                        'Lowercase',
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFF292D32),
-                        ),
-                      ),
+                      MyText(label: 'Lowercase'),
                       // Spacer(),
                       Checkbox(
                         activeColor: Color(0xFF105DFB),
@@ -348,14 +272,7 @@ class _NewRecordState extends State<NewRecord> {
                           provider.isCheckedLowerCase = value!;
                         },
                       ),
-                      Text(
-                        'Uppercase',
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFF292D32),
-                        ),
-                      ),
+                      MyText(label: 'Uppercase'),
                       // Spacer(),
                       Checkbox(
                         activeColor: Color(0xFF105DFB),
@@ -470,6 +387,23 @@ class _NewRecordState extends State<NewRecord> {
           ),
         );
       },
+    );
+  }
+}
+
+class MyText extends StatelessWidget {
+  final String label;
+  const MyText({super.key, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      label,
+      style: GoogleFonts.poppins(
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+        color: Color(0xFF292D32),
+      ),
     );
   }
 }

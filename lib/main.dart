@@ -5,6 +5,7 @@ import 'package:task/firebase_options.dart';
 import 'package:task/provider/bottom_bar_provider.dart';
 import 'package:task/provider/login_provider.dart';
 import 'package:task/provider/new_record_provider.dart';
+import 'package:task/provider/search_provider.dart';
 import 'package:task/provider/signup_provider.dart';
 import 'package:task/view/screens/authentication_screens/login_Screen.dart';
 import 'package:task/view/screens/authentication_screens/signup_screen.dart';
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (create)=>LoginProvider()),
         ChangeNotifierProvider(create: (create)=>SignInProvider()),
         ChangeNotifierProvider(create: (create)=>BottomBarProvider()),
-        ChangeNotifierProvider(create: (create)=>NewRecordProvider())
+        ChangeNotifierProvider(create: (create)=>NewRecordProvider()),
+        ChangeNotifierProvider(create: (_) => SearchProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

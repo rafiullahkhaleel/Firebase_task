@@ -1,14 +1,10 @@
-import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task/provider/signup_provider.dart';
 import 'package:task/view/screens/authentication_screens/register_screen.dart';
+import 'package:task/view/widgets/custom_field.dart';
 import 'package:task/view/widgets/my_custom_button.dart';
-import '../bottom_bar_screen.dart';
 import 'login_Screen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -21,7 +17,6 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
-    print('build All');
     return Consumer<SignInProvider>(
       builder: (context, provider, child) {
         return Scaffold(
@@ -47,56 +42,29 @@ class _SignupScreenState extends State<SignupScreen> {
                     spacing: MediaQuery.of(context).size.height * .03,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextFormField(
+                      CustomField(
                         controller: provider.nameController,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          hintText: 'User Name',
-                          hintStyle: TextStyle(color: Colors.black45),
+                        hintText: 'User Name',
+                        validationText: 'Please enter your Name',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your Name';
-                          } else {
-                            return null;
-                          }
-                        },
                       ),
-                      TextFormField(
+                      CustomField(
                         controller: provider.emailController,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          hintText: 'Email',
-                          hintStyle: TextStyle(color: Colors.black45),
+                        hintText: 'email',
+                        validationText: 'Please enter your Email',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
-                          } else {
-                            return null;
-                          }
-                        },
                       ),
-                      TextFormField(
-                        controller: provider.passwordController,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          hintText: 'Password',
-                          hintStyle: TextStyle(color: Colors.black45),
+                      CustomField(
+                        controller: provider.nameController,
+                        hintText: 'Password',
+                        validationText: 'Please enter your Password',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50),
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
-                          } else {
-                            return null;
-                          }
-                        },
                       ),
                       MyCustomButton(
                         onTap: () {

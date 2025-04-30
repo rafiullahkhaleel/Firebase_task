@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../services/random_password.dart';
 
-class NewRecordProvider extends ChangeNotifier{
+class NewRecordProvider extends ChangeNotifier {
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -20,28 +20,51 @@ class NewRecordProvider extends ChangeNotifier{
 
   bool _isLoading = false;
   bool _isCheckedNumbers = false;
-  bool isCheckedSymbols = false;
-  bool isCheckedLowerCase = false;
-  bool isCheckedUpperCase = false;
-  double sliderValue = 4;
+  bool _isCheckedSymbols = false;
+  bool _isCheckedLowerCase = false;
+  bool _isCheckedUpperCase = false;
+  double _sliderValue = 4;
 
   bool get isLoading => _isLoading;
   bool get isCheckedNumbers => _isCheckedNumbers;
+  bool get isCheckedSymbols => _isCheckedSymbols;
+  bool get isCheckedLowerCase => _isCheckedLowerCase;
+  bool get isCheckedUpperCase => _isCheckedUpperCase;
+  double get sliderValue => _sliderValue;
 
-  set isLoading(bool value){
+  set isLoading(bool value) {
     _isLoading = value;
     notifyListeners();
   }
 
-  set isCheckedNumbers(bool value){
+  set isCheckedNumbers(bool value) {
     _isCheckedNumbers = value;
     notifyListeners();
   }
 
+  set isCheckedSymbols(bool value) {
+    _isCheckedSymbols = value;
+    notifyListeners();
+  }
 
+  set isCheckedLowerCase(bool value) {
+    _isCheckedLowerCase = value;
+    notifyListeners();
+  }
 
+  set isCheckedUpperCase(bool value) {
+    _isCheckedUpperCase = value;
+    notifyListeners();
+  }
 
+  set sliderValue(double value) {
+    _sliderValue = value;
+    notifyListeners();
+  }
 
+  void colorChange() {
+    notifyListeners();
+  }
 
   bool field1() {
     return nameController.text.length >= 3;
@@ -55,9 +78,8 @@ class NewRecordProvider extends ChangeNotifier{
     return passwordController.text.length >= 4;
   }
 
-  password(){
-    passwordController.text = passwordGenerate
-        .generateRandomPassword(
+  password() {
+    passwordController.text = passwordGenerate.generateRandomPassword(
       sliderValue.toInt(),
       isCheckedUpperCase,
       isCheckedLowerCase,
@@ -69,39 +91,28 @@ class NewRecordProvider extends ChangeNotifier{
 
   Future<void> savePassword(BuildContext context) async {
     try {
-        isLoading = true;
+      isLoading = true;
       await FirebaseFirestore.instance
           .collection('userData')
-          .doc(
-        DateTime.now().millisecondsSinceEpoch
-            .toString(),
-      )
+          .doc(DateTime.now().millisecondsSinceEpoch.toString())
           .set({
-        'platformName': nameController.text,
-        'emailName': emailController.text,
-        'category': selectedOption,
-        'password': passwordController.text,
-        'uid':
-        FirebaseAuth
-            .instance
-            .currentUser!
-            .uid,
-      })
+            'platformName': nameController.text,
+            'emailName': emailController.text,
+            'category': selectedOption,
+            'password': passwordController.text,
+            'uid': FirebaseAuth.instance.currentUser!.uid,
+          })
           .then((v) {
-          isLoading = false;
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(
-          SnackBar(
-            content: Text('SAVED SUCCESSFULLY'),
-          ),
-        );
-      });
+            isLoading = false;
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text('SAVED SUCCESSFULLY')));
+          });
     } catch (e) {
-        isLoading = false;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('ERROR OCCURRED $e')),
-      );
+      isLoading = false;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('ERROR OCCURRED $e')));
     }
   }
 }

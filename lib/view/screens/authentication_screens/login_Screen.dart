@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task/provider/login_provider.dart';
+import 'package:task/view/widgets/custom_field.dart';
 
 import '../../widgets/my_custom_button.dart';
 
@@ -40,39 +41,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   spacing: MediaQuery.of(context).size.height * .03,
                   children: [
-                    TextFormField(
+                    CustomField(
                       controller: provider.emailController,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        hintText: 'Email',
-                        hintStyle: TextStyle(color: Colors.black45),
+                      hintText: 'Email',
+                      validationText: 'Please enter your Email',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
-                        } else {
-                          return null;
-                        }
-                      },
                     ),
-                    TextFormField(
+                    CustomField(
                       controller: provider.passwordController,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        hintText: 'Password',
-                        hintStyle: TextStyle(color: Colors.black45),
+                      hintText: 'Email',
+                      validationText: 'Please enter your password',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
-                        } else {
-                          return null;
-                        }
-                      },
                     ),
                     TextButton(
                       onPressed: () async {
@@ -89,8 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                     ),
                     MyCustomButton(
-                      onTap: (){
-
+                      onTap: () {
                         provider.login(context);
                       },
                       name: 'Log In',
@@ -111,9 +93,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             recognizer:
                                 TapGestureRecognizer()
-                                  ..onTap = (){
+                                  ..onTap = () {
                                     provider.goToDashboard(context);
-                                  }
+                                  },
                           ),
                         ],
                       ),
@@ -128,5 +110,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-
